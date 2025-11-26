@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<html lang="ko" dir="ltr">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, user-scalable=no,maximum-scale=1"
+    />
+    <meta name="format-detection" content="telephone=no" />
+    <title>HEY MIRROR</title>
+
+    <!-- css -->
+    <link rel="stylesheet" href="./assets/css/reset.css" type="text/css" />
+    <link rel="stylesheet" href="./assets/css/style.css?ver=<?=time()?>">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="./assets/css/plugin/swiper-bundle.min.css" />
+    <!-- FullCalendar -->
+    <link href="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.15/index.global.min.css" rel="stylesheet">
+
+    <!-- Plus Jakarta Sans -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap" rel="stylesheet">
+
+    <!-- JS -->
+    <script src="./assets/js/plugin/jquery-3.5.1.min.js"></script>
+    <script src="./assets/js/plugin/swiper-bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/intersection-observer@0.12.2/intersection-observer.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+    <!-- chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1"></script>
+    <!-- FullCalendar -->
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.15/index.global.min.js"></script>
+  </head>
+
+  <body>
+    <div id="wrap">
+      <main class="container main" id="mainPage">
+        <div id="menubar"></div>
+        <div class="mirrormode_bg"></div>
+        <section class="dashboard_top">
+          <div class="dashboard_top_main">
+            <div class="swiper dashboardTopSwiper">
+              <div class="swiper-wrapper">
+                <div class="swiper-slide slide-clock">
+                  <!-- 
+                    =======================================
+                    Description: [메인 비주얼 영역] 시계 및 날짜 영역
+                    =======================================
+                  -->
+                  <div class="clock_weather_wrap">
+                    <div class="clock_wrap">
+                      <div class="clock_bg"></div>
+                      <div class="clock">
+                        <div class="bar nine"></div>
+                        <div class="bar three"></div>
+                        <div class="hour"></div>
+                        <div class="min"></div>
+                        <div class="sec"></div>
+                      </div>
+                      <div class="clock_num">
+                        <p class="hour_num"><span>1</span><span>4</span></p>
+                        <p class="min_num"><span>5</span><span>9</span></p>
+                      </div>
+                      <button type="button" class="btn_weather">
+                        <span class="temperature_wrap">
+                          <!-- 날씨에 맞는 클래스 추가 필요 
+                              맑음 : sunny
+                              구름 조금 : partCloudy
+                              흐림 : cloudy
+                              약한 비 : rain
+                              강한 비 : heavyRain
+                              약한 눈 : snow
+                              강한 눈 : heavySnow
+                              천둥/번개 : thunder -->
+                          <span class="weather sunny"></span>
+                          <span class="temperature">29°</span>
+                        </span>
+                        <span class="day_wrap">
+                          <span class="day">Tuesday,</span>
+                          <span class="month">September</span>
+                          <span class="date">5</span>
+                        </span>
+                        <span class="arrow"></span>
+                      </button>
+                    </div>
+                    <div class="weather_wrap">
+                      <div class="weather_detail_wrap">
+                        <button type="button" class="btn_clock_wrap"></button>
+                        <div class="today_weather">
+                          <div class="weather_info">
+                            <!-- 날씨에 맞는 클래스 추가 필요 
+                              맑음 : sunny
+                              구름 조금 : partCloudy
+                              흐림 : cloudy
+                              약한 비 : rain
+                              강한 비 : heavyRain
+                              약한 눈 : snow
+                              강한 눈 : heavySnow
+                              천둥/번개 : thunder -->
+                            <p class="weather sunny"></p>
+                            <p class="weather_detail">
+                              <span class="temperature">29°</span>
+                              <span class="weather_status">맑음</span>
+                            </p>
+                          </div>
+                          <ul class="air_info">
+                            <li>
+                              <p class="type humidity">습도</p>
+                              <p class="detail">57%</p>
+                            </li>
+                            <li>
+                              <p class="type fine_dust">미세먼지</p>
+                              <p class="detail">좋음</p>
+                            </li>
+                            <li>
+                              <p class="type ultrafine_dust">초미세먼지</p>
+                              <p class="detail">보통</p>
+                            </li>
+                          </ul>
+                        </div>
+                        <ul class="week_list">
+                          <!-- 날씨에 맞는 클래스 추가 필요 
+                              맑음 : sunny
+                              구름 조금 : partCloudy
+                              흐림 : cloudy
+                              약한 비 : rain
+                              강한 비 : heavyRain
+                              약한 눈 : snow
+                              강한 눈 : heavySnow
+                              천둥/번개 : thunder -->
+                          <li>
+                            <p class="day">오늘</p>
+                            <div class="weather sunny"></div>
+                          </li>
+                          <li>
+                            <p class="day">금</p>
+                            <div class="weather partCloudy"></div>
+                          </li>
+                          <li>
+                            <p class="day">토</p>
+                            <div class="weather cloudy"></div>
+                          </li>
+                          <li>
+                            <p class="day">일</p>
+                            <div class="weather rain"></div>
+                          </li>
+                          <li>
+                            <p class="day">월</p>
+                            <div class="weather heavyRain"></div>
+                          </li>
+                          <li>
+                            <p class="day">화</p>
+                            <div class="weather snow"></div>
+                          </li>
+                          <li>
+                            <p class="day">수</p>
+                            <div class="weather heavySnow"></div>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="swiper-slide slide-graph">
+                  <!-- 
+                    =======================================
+                    Description: [메인 비주얼 영역] 공간관리현황 영역
+                    =======================================
+                  -->
+                  <div class="space_report_wrap">
+                    <div class="tit_wrap">
+                      <p class="tit">Space Report</p>
+                      <p class="tit_kor">공간관리현황</p>
+                    </div>
+                    <div class="space_report_list">
+                      <div class="list_item plasma_ion">
+                        <div class="txt_box">
+                          <p class="list_tit">플라즈마 / 이온</p>
+                          <p class="list_data">24%</p>
+                          <p class="list_status">Low</p>
+                        </div>
+                        <div class="donut_chart_box">
+                          <div class="donut">
+                            <svg class="donut-svg" viewBox="0 0 200 200" aria-hidden="true">
+                              <circle class="donut-track" cx="100" cy="100" r="86" />
+                              <circle class="donut-progress" cx="100" cy="100" r="86" />
+                              <circle class="donut-hole" cx="100" cy="100" r="72" />
+                              <circle class="donut-knob" cx="100" cy="14" r="2"/>
+                            </svg>
+                          </div>
+                          <div class="donut_info">
+                            <p class="hour_min">6h 47m</p>
+                            <p class="standard">24시 기준</p>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="list_item led">
+                        <div class="txt_box">
+                          <p class="list_tit">LED 405 살균</p>
+                          <p class="list_data">54%</p>
+                          <p class="list_status">Good</p>
+                        </div>
+                        <div class="donut_chart_box">
+                          <div class="donut">
+                            <svg class="donut-svg" viewBox="0 0 200 200" aria-hidden="true">
+                              <circle class="donut-track" cx="100" cy="100" r="86" />
+                              <circle class="donut-progress" cx="100" cy="100" r="86" />
+                              <circle class="donut-hole" cx="100" cy="100" r="72" />
+                              <circle class="donut-knob" cx="100" cy="14" r="2"/>
+                            </svg>
+                          </div>
+                          <div class="donut_info">
+                            <p class="hour_min">6h 47m</p>
+                            <p class="standard">24시 기준</p>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="list_item temperature_humidity">
+                        <div class="swiper temperatureHumiditySwiper">
+                          <div class="swiper-wrapper">
+                            <div class="swiper-slide">
+                              <div class="txt_box">
+                                <p class="list_tit">온도</p>
+                                <p class="list_data">25.5%</p>
+                                <p class="list_status">Good</p>
+                              </div>
+                              <div class="linechart_box">
+                                <canvas id="temperatureChart" class="chart_canvas" width="220" height="120"></canvas>
+                                <div class="label">
+                                  <p>11:00</p>
+                                  <p>12:00</p>
+                                  <p>13:00</p>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="swiper-slide">
+                              <div class="txt_box">
+                                <p class="list_tit">습도</p>
+                                <p class="list_data">62%</p>
+                                <p class="list_status humidity">Wet</p>
+                              </div>
+                              <div class="linechart_box">
+                                <canvas id="humidityChart" class="chart_canvas" width="220" height="120"></canvas>
+                                <div class="label">
+                                  <p>11:00</p>
+                                  <p>12:00</p>
+                                  <p>13:00</p>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="swiper-pagination"></div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="swiper-slide slide-news">
+                  <!-- 
+                    =======================================
+                    Description: [메인 비주얼 영역] 뉴스 영역
+                    =======================================
+                  -->
+                  <div class="news_wrap">
+                    <p class="today_news">Today’s news</p>
+                    <ul class="news_list">
+                      <li>
+                        <a href="javascript:void(0)" title="뉴스 이동">롯데하이마트, 아이폰17 사전예약 개시... “최대 24개월 무이자 등 혜택</a>
+                      </li>
+                      <li>
+                        <a href="javascript:void(0)" title="뉴스 이동">“이문 자이파크 입주 공략” 시몬스, 삼성전자와 이벤트</a>
+                      </li>
+                      <li>
+                        <a href="javascript:void(0)" title="뉴스 이동">반도체 훈풍 이어진다... 삼성전자·SK하이닉스, 나란히 신고가</a>
+                      </li>
+                      <li>
+                        <a href="javascript:void(0)" title="뉴스 이동">‘이대로는 일 못해’ 스타벅스 직원들 곡소리 터지자...’그럼 알바 뽑겠다’</a>
+                      </li>
+                      <li>
+                        <a href="javascript:void(0)" title="뉴스 이동">[특징주] '무단 소액결제 사태 사과' KT, 이틀째 약세 마감(종합)</a>
+                      </li>
+                      <li>
+                        <a href="javascript:void(0)" title="뉴스 이동">질주하는 코스피, 3400선도 뚫을까…외국인·기관 매수 ‘쌍끌이’</a>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+              <!-- 에어샤워 : has_airshower
+                조명 : has_lighting 
+                에어드라이 : has_airdry 
+                라디오 : has_radio 
+                검색 : has_searching -->
+            <div class="voice_wrap">
+              <div class="voice_inner">
+                <div class="voice_ic_wrap">
+                  <video
+                    class="voice_before active"
+                    src="./assets/images/main/voice_basic.mp4"
+                    autoplay
+                    muted
+                    loop
+                    playsinline
+                  ></video>
+                </div>
+              </div>
+            </div>
+            <div class="radio_wrap">
+              <div class="radio_inner">
+                <div class="radio_btn_wrap">
+                  <div class="radio_tab_btn_wrap">
+                    <button type="button" class="btn_radio_tab active" data-tab="radioChannel">청취 중 채널</button>
+                    <button type="button" class="btn_radio_tab" data-tab="radioChannelList">채널 리스트</button>
+                  </div>
+                  <button type="button" class="btn_radio_close"></button>
+                </div>
+                <div class="radio_tab_contents">
+                  <div class="radio_content active" id="radioChannel">
+                    <div class="radio_top_wrap">
+                      <div class="frequency_wrap">
+                        <div class="frequency_btn_wrap">
+                          <button type="button" class="btn_frequency">AM</button>
+                          <button type="button" class="btn_frequency active">FM</button>
+                        </div>
+                        <div class="frequency_num_wrap">
+                          <p class="frequency_num">107.7</p>
+                          <p class="frequency_unit">KHz</p>
+                        </div>
+                      </div>
+                      <div class="radio_tit_box">
+                        <p class="radio_company">SBS 파워FM</p>
+                        <p class="radio_tit">12시엔 주현영</p>
+                      </div>
+                    </div>
+                    <div class="radio_bottom_wrap">
+                      <div class="radio_volume_wrap">
+                        <p class="radio_volume">28%</p>
+                        <button type="button" class="btn_volume down"></button>
+                        <input type="range" id="radioRange" min="0" max="100" step="1" value="28" />
+                        <button type="button" class="btn_volume up"></button>
+                      </div>
+                      <div class="radio_play_btn_wrap">
+                        <button type="button" class="btn_prev"></button>
+                        <button type="button" class="btn_play stop"></button>
+                        <button type="button" class="btn_next"></button>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="radio_content" id="radioChannelList">
+                    <div class="radio_list_wrap">
+                      <div class="radio_list">
+                        <button type="button" class="btn_radio_list active">
+                          <span class="ic_wrap"></span>
+                          <span class="radio_tit">MBC 표준 FM - 손태진의 트로트 라디오 1,2부</span>
+                          <span class="playing">재생중</span>
+                        </button>
+                        <button type="button" class="btn_radio_list">
+                          <span class="ic_wrap"></span>
+                          <span class="radio_tit">SBS 러브 FM - 박세미의 수다가 체질</span>
+                        </button>
+                        <button type="button" class="btn_radio_list">
+                          <span class="ic_wrap"></span>
+                          <span class="radio_tit">SBS 파워 FM - 12시엔 주현영</span>
+                        </button>
+                        <button type="button" class="btn_radio_list">
+                          <span class="ic_wrap"></span>
+                          <span class="radio_tit">SBS 파워 FM - 12시엔 주현영</span>
+                        </button>
+                        <button type="button" class="btn_radio_list">
+                          <span class="ic_wrap"></span>
+                          <span class="radio_tit">SBS 파워 FM - 12시엔 주현영</span>
+                        </button>
+                        <button type="button" class="btn_radio_list">
+                          <span class="ic_wrap"></span>
+                          <span class="radio_tit">SBS 파워 FM - 12시엔 주현영</span>
+                        </button>
+                        <button type="button" class="btn_radio_list">
+                          <span class="ic_wrap"></span>
+                          <span class="radio_tit">SBS 파워 FM - 12시엔 주현영</span>
+                        </button>
+                        <button type="button" class="btn_radio_list">
+                          <span class="ic_wrap"></span>
+                          <span class="radio_tit">SBS 파워 FM - 12시엔 주현영</span>
+                        </button>
+                        <button type="button" class="btn_radio_list">
+                          <span class="ic_wrap"></span>
+                          <span class="radio_tit">SBS 파워 FM - 12시엔 주현영</span>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="dashboard_btn_wrap">
+            <div class="profile_wrap">
+              <div class="profile">
+                <img src="./assets/images/common/profile_img.png" alt="프로필 이미지">
+              </div>
+            </div>
+            <div class="main_btn">
+              <button type="button" class="btn_clock active" data-target="slide-clock"></button>
+              <button type="button" class="btn_graph" data-target="slide-graph"></button>
+              <button type="button" class="btn_news" data-target="slide-news"></button>
+            </div>
+            <div class="radio_open open"></div>
+            <button type="button" class="btn_voice"></button>
+          </div>
+        </section>
+  
+        <section class="dashboard_bottom">
+          <div class="dashboard_info">
+            <div class="empty_box"></div>
+            <div class="radiation_measurement_box">
+              <div class="profile_box">
+                <div class="profile">
+                  <img src="./assets/images/common/profile_img.png" alt="프로필 이미지">
+                </div>
+                <p class="welcome_txt">안녕하세요, 채현</p>
+              </div>
+              <p class="measurement_txt">방사능 측정 중 ...</p>
+            </div>
+            <div class="measurement_complete_box">
+              <div class="complete_txt_wrap">
+                <p class="complete_txt">방사선 수치 <span class="point">정상 범위</span>입니다.</p>
+              </div>
+              <p class="complete_num">
+                <span class="num">126</span>nSv/h
+              </p>
+            </div>
+            <div class="daily_info_box">
+              <div class="swiper dailyInfoSwiper">
+                <div class="swiper-wrapper">
+                  <div class="swiper-slide">
+                    <button type="button" class="btn_daily_message">
+                      <span class="from_wrap">
+                        From. <span class="from_name">엄마</span>
+                        <span class="news_message">새 메세지</span>
+                      </span>
+                      <span class="message">
+                        냉장고에 요거트 있으니까 <br>
+                        집에 도착하면 꺼내먹어 오늘 7시쯤 집에 도착해
+                      </span>
+                      <span class="time_wrap">
+                        <span class="date">2025.09.01</span>
+                        <span class="time">AM 10:09</span>
+                      </span>
+                    </button>
+                  </div>
+                  <div class="swiper-slide">
+                    <button type="button" class="btn_daily_message">
+                      <span class="from_wrap">
+                        From. <span class="from_name">엄마</span>
+                        <span class="news_message">새 메세지</span>
+                      </span>
+                      <span class="message">
+                        냉장고에 요거트 있으니까 <br>
+                        집에 도착하면 꺼내먹어 오늘 7시쯤 집에 도착해
+                      </span>
+                      <span class="time_wrap">
+                        <span class="date">2025.09.01</span>
+                        <span class="time">AM 10:09</span>
+                      </span>
+                    </button>
+                  </div>
+                  <div class="swiper-slide">
+                    <button type="button" class="btn_daily_message">
+                      <span class="from_wrap">
+                        From. <span class="from_name">엄마</span>
+                        <span class="news_message">새 메세지</span>
+                      </span>
+                      <span class="message">
+                        냉장고에 요거트 있으니까 <br>
+                        집에 도착하면 꺼내먹어 오늘 7시쯤 집에 도착해
+                      </span>
+                      <span class="time_wrap">
+                        <span class="date">2025.09.01</span>
+                        <span class="time">AM 10:09</span>
+                      </span>
+                    </button>
+                  </div>
+                  <div class="swiper-slide">
+                    <button type="button" class="btn_daily_message">
+                      <span class="from_wrap">
+                        From. <span class="from_name">엄마</span>
+                        <span class="news_message">새 메세지</span>
+                      </span>
+                      <span class="message">
+                        냉장고에 요거트 있으니까 <br>
+                        집에 도착하면 꺼내먹어 오늘 7시쯤 집에 도착해
+                      </span>
+                      <span class="time_wrap">
+                        <span class="date">2025.09.01</span>
+                        <span class="time">AM 10:09</span>
+                      </span>
+                    </button>
+                  </div>
+                  <div class="swiper-slide">
+                    <button type="button" class="btn_daily_message">
+                      <span class="from_wrap">
+                        From. <span class="from_name">엄마</span>
+                        <span class="news_message">새 메세지</span>
+                      </span>
+                      <span class="message">
+                        냉장고에 요거트 있으니까 <br>
+                        집에 도착하면 꺼내먹어 오늘 7시쯤 집에 도착해
+                      </span>
+                      <span class="time_wrap">
+                        <span class="date">2025.09.01</span>
+                        <span class="time">AM 10:09</span>
+                      </span>
+                    </button>
+                  </div>
+                </div>
+                <div class="swiper-pagination"></div>
+              </div>
+              <button type="button" class="btn_daily_schedule">
+                <span class="schedule_tit_box">
+                  오늘의 일정<span class="today">9월 5일</span>
+                </span>
+                <span class="schedule_list">
+                  <span class="schedule_item">
+                    <span class="schedule">F1 심야영화 보러가기</span>
+                    <span class="time">오후 9:00</span>
+                  </span>
+                </span>
+              </button>
+            </div>
+          </div>
+          <div class="dashboard_item">
+            <div class="dashboard_left">
+              <div class="ai_styling_wrap">
+                <div class="bg">
+                  <img src="./assets/images/main/ai_styling_bg.jpg" alt="">
+                </div>
+                <div class="tit_wrap">
+                  <p class="sub_tit">Ai</p>
+                  <p class="tit">Styling</p>
+                </div>
+                <div class="bottom_set">
+                  <button type="button" class="btn_ai_styling">시작하기</button>
+                  <p class="desc">나에게 맞는 스타일링을 추천받아보세요</p>
+                </div>
+              </div>
+              <div class="airdry_wrap">
+                <div class="bg">
+                  <img src="./assets/images/main/bg_air_dry.jpg" alt="">
+                </div>
+                <div class="tit_wrap">
+                  <p class="tit">Air Dry</p>
+                </div>
+                <div class="bottom_set">
+                  <button type="button" class="btn_airdry_power"></button>
+                  <button type="button" class="btn_airdry">관리하기</button>
+                  <p class="desc">최적의 제습 환경으로 의류를 관리합니다.</p>
+                </div>
+              </div>
+            </div>
+            <div class="dashboard_right">
+              <div class="lighting_wrap">
+                <div class="tit_wrap">
+                  <div class="tit_box">
+                    <p class="tit">조명 모드</p>
+                    <p class="percent">
+                      <span id="percentValueMain">80</span>%
+                    </p>
+                  </div>
+                  <!-- off시 off클래스 추가 -->
+                  <button type="button" class="btn_power"></button>
+                </div>
+                <div class="lighting_box">
+                  <div class="range_wrap">
+                    <input type="range" id="percentRangeMain" min="0" max="100" step="10" value="80" />
+                  </div>
+                  <div class="lighting_img">
+                    <img src="./assets/images/main/lighting_yellow_80p.png" alt="">
+                  </div>
+                  <div class="lighting_basic_img">
+                    <img src="./assets/images/main/lighting_off.png" alt="">
+                  </div>
+                  <div class="lighting_btn_wrap">
+                    <button type="button" class="btn_yellow active">Yellow</button>
+                    <button type="button" class="btn_white">White</button>
+                    <button type="button" class="btn_led">LED405</button>
+                  </div>
+                </div>
+                <button type="button" class="btn_mirrormode">Mirror Mode</button>
+              </div>
+              <div class="lifemedia_wrap">
+                <button type="button" class="btn_lifemedia">
+                  <span>Life Media</span>
+                </button>
+              </div>
+              <div class="etc_wrap">
+                <button type="button" class="btn_radio">Radio</button>
+                <button type="button" class="btn_wallpad">Wall Pad</button>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- 헬스스캔 영역 (활성화 시 active클래스 추가) -->
+        <div id="healthScan"></div>
+
+        <!-- 캘린더 영역 (활성화 시 active클래스 추가) -->
+        <!-- 라디오 있을 경우 has_calendar_radio 추가 -->
+        <div id="calendarWrap" class="has_calendar_radio"></div>
+
+        <!-- shower 영역 (활성화 시 active클래스 추가) -->
+        <div id="airShower"></div>
+
+        <!-- 에어드라이 영역 (활성화 시 active클래스 추가) -->
+        <div id="airDry"></div>
+
+        <!-- lifeMedia 영역 (활성화 시 active클래스 추가)
+              음성 듣고 있을 시 has_voice 클래스 추가-->
+        <div id="lifeMedia"></div>
+
+        <!-- 음성명령 영역 (에어샤워기/조명/에어드라이/라디오)(활성화 시 active클래스 추가) -->
+        <div id="voiceCommand"></div>
+
+        <!-- 라디오 위젯(작은버전) -->
+        <div class="radio_mini_widget">
+          <p class="radio_tit">SBS 파워FM - 12시엔 주현영</p>
+          <div class="calendar_radio_btn">
+            <button type="button" class="btn_prev"></button>
+            <!-- stop클래스 토글 필요 -->
+            <button type="button" class="btn_play stop"></button>
+            <button type="button" class="btn_next"></button>
+          </div>
+          <button type="button" class="btn_radio_close"></button>
+        </div>
+      </main>
+    </div>
+    <script>
+      $("#menubar").load("./include/menubar.html");
+      $("#healthScan").load("./include/healthScan.html");
+      $("#calendarWrap").load("./include/calendar.html");
+      $("#airShower").load("./include/shower.html");
+      $("#airDry").load("./include/airDry.html");
+      $("#lifeMedia").load("./include/lifeMedia.html");
+      $("#voiceCommand").load("./include/voiceCommand.html");
+    </script>
+    <script src="./assets/js/main.js"></script>
+  </body>
+</html>
