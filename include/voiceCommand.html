@@ -1,0 +1,488 @@
+<div class="voice_command_wrap">
+  <div class="voice_command_box">
+    <!-- #voiceCommand에 has_airshower 클래스 있을 경우 활성화 -->
+    <div class="voice_airshower_box">
+      <p class="tit">Shower<span class="sub_tit">Air</span></p>
+      <p class="airshower_status">에어샤워 진행중입니다.</p>
+      <div class="airshower_img">
+        <img src="/assets/images/main/airshower_fan.png" alt="" class="on">
+        <div class="video_box">
+          <video 
+            class="on_ing weak"
+            src="/assets/images/main/airshower_fan_weak.mp4"
+            autoplay
+            muted
+            loop
+            playsinline
+          ></video>
+          <video 
+            class="on_ing medium"
+            src="/assets/images/main/airshower_fan_medium.mp4"
+            autoplay
+            muted
+            loop
+            playsinline
+          ></video>
+          <video 
+            class="on_ing strong"
+            src="/assets/images/main/airshower_fan_strong.mp4"
+            autoplay
+            muted
+            loop
+            playsinline
+          ></video>
+        </div>
+      </div>
+      <div class="airshower_btn_wrap">
+        <button type="button" class="btn_level weak">
+          <span class="ic_wrap"></span>
+          <span class="txt">약</span>
+        </button>
+        <button type="button" class="btn_level medium">
+          <span class="ic_wrap"></span>
+          <span class="txt">중</span>
+        </button>
+        <button type="button" class="btn_level strong active">
+          <span class="ic_wrap"></span>
+          <span class="txt">강</span>
+        </button>
+      </div>
+      <p class="desc_txt">강도를 조절하려면 누르세요</p>
+    </div>
+
+    <!-- #voiceCommand에 has_lighting 클래스 있을 경우 활성화 -->
+    <div class="voice_lighting_box">
+      <p class="tit">Lighting</p>
+      <p class="lighting_status">조명 작동중입니다.</p>
+      <div class="range_wrap">
+        <input type="range" id="percentRange" min="0" max="100" step="10" value="80" />
+      </div>
+      <div class="lighting_img">
+        <img src="/assets/images/main/lighting_yellow_80p.png" alt="">
+      </div>
+      <div class="lighting_basic_img">
+        <img src="/assets/images/main/lighting_off.png" alt="">
+      </div>
+      <div class="percent_text">
+        <p id="percentValue">80</p>%
+      </div>
+      <div class="lighting_btn_wrap">
+        <button type="button" class="btn_yellow active">Yellow</button>
+        <button type="button" class="btn_white">White</button>
+        <button type="button" class="btn_led">LED405</button>
+      </div>
+      <p class="lighting_desc">강도를 조절하려면 왼쪽 영역을 드래그하세요</p>
+    </div>
+
+    <!-- #voiceCommand에 has_airdry 클래스 있을 경우 활성화 -->
+    <div class="voice_airdry_box">
+      <p class="tit">Air Dry</p>
+      <p class="airdry_status">AI 제습 케어 진행중입니다.</p>
+      <div class="airdry_img">
+        <img src="/assets/images/main/airdry_fan.png" alt="" class="on">
+      </div>
+      <div class="airdry_btn_wrap">
+        <button type="button" class="btn_mode sleep">
+          <span class="txt">취침</span>
+        </button>
+        <button type="button" class="btn_mode normal">
+          <span class="txt">표준</span>
+        </button>
+        <button type="button" class="btn_mode turbo">
+          <span class="txt">쾌속</span>
+        </button>
+        <button type="button" class="btn_mode auto active">
+          <span class="txt">자동</span>
+        </button>
+      </div>
+      <div class="humidity_btn_box">
+        <button type="button" class="btn_up">
+          <span class="ic_arrow"></span>
+        </button>
+        <p class="humidity_num">42%</p>
+        <button type="button" class="btn_down">
+          <span class="ic_arrow"></span>
+        </button>
+      </div>
+      <p class="desc_txt">강도를 조절하려면 누르세요</p>
+    </div>
+
+    <!-- #voiceCommand에 has_radio 클래스 있을 경우 활성화 -->
+    <div class="voice_radio_box">
+      <p class="tit">Radio</p>
+      <p class="radio_status">
+        <span class="radio_on">라디오 작동중입니다.</span>
+        <span class="radio_off">라디오 작동전입니다.</span>
+      </p>
+      <div class="radio_tit_box">
+        <p class="radio_company">
+          <span class="radio_on">SBS 파워FM</span>
+          <span class="radio_off">OFF</span>
+        </p>
+        <p class="radio_tit">
+          <span class="radio_on">12시엔 주현영</span>
+          <span class="radio_off">재생중인 채널이 없습니다</span>
+        </p>
+      </div>
+      <div class="radio_play_btn_wrap">
+        <button type="button" class="btn_prev"></button>
+        <button type="button" class="btn_play stop"></button>
+        <button type="button" class="btn_next"></button>
+      </div>
+      <div class="frequency_wrap">
+        <div class="frequency_btn_wrap">
+          <button type="button" class="btn_frequency">AM</button>
+          <button type="button" class="btn_frequency active">FM</button>
+        </div>
+        <div class="frequency_num_wrap">
+          <p class="frequency_num">107.7</p>
+          <p class="frequency_unit">KHz</p>
+        </div>
+      </div>
+      <div class="radio_volume_wrap">
+        <p class="radio_volume">28%</p>
+        <button type="button" class="btn_volume down"></button>
+        <input type="range" id="radioRange" min="0" max="100" step="1" value="28" />
+        <button type="button" class="btn_volume up"></button>
+      </div>
+    </div>
+
+    <!-- #voiceCommand에 has_searching 클래스 있을 경우 활성화 -->
+    <div class="voice_searching_box">
+      <div class="box_head">
+        <div class="ic_star"></div>
+        <button type="button" class="btn_searching_close"></button>
+      </div>
+      <div class="searching_txt_box">
+        <div class="box_inner">
+          <p class="searching_txt">
+            아이폰 17 시리즈의 사전 예약 일정은 다음과 같습니다. <br>
+            · 언팩 이벤트 (공개일): 2025년 9월 9일<br>
+            · 사전 예약 기간: 2025년 9월 12일 ~ 9월 18일<br>
+            · 정식 출시 및 개통 시작일: 2025년 9월 19일<br>
+            한국은 1차 출시국에 포함되었으며, 위 일정은 국내 이동통신사 및 애플 공식 홈페이지에 동일하게 적용됩니다.<br>
+            사전 예약은 통신사, 애플 공식 홈페이지, 그리고 쿠팡과 같은 주요 온라인 쇼핑몰 등에서 진행되고 있습니다. 업체별로 제공하는 혜택이 다르니, 원하는 혜택에 맞춰서 예약하는 것을 추천합니다.<br><br>
+    
+            아이폰 17 시리즈의 사전 예약 일정은 다음과 같습니다.<br>
+            · 언팩 이벤트 (공개일): 2025년 9월 9일<br>
+            · 사전 예약 기간: 2025년 9월 12일 ~ 9월 18일<br>
+            · 정식 출시 및 개통 시작일: 2025년 9월 19일<br>
+            한국은 1차 출시국에 포함되었으며, 위 일정은 국내 이동통신사 및 애플 공식 홈페이지에 동일하게 적용됩니다.<br>
+            사전 예약은 통신사, 애플 공식 홈페이지, 그리고 쿠팡과 같은 주요 온라인
+  
+            아이폰 17 시리즈의 사전 예약 일정은 다음과 같습니다.<br>
+            · 언팩 이벤트 (공개일): 2025년 9월 9일<br>
+            · 사전 예약 기간: 2025년 9월 12일 ~ 9월 18일<br>
+            · 정식 출시 및 개통 시작일: 2025년 9월 19일<br>
+            한국은 1차 출시국에 포함되었으며, 위 일정은 국내 이동통신사 및 애플 공식 홈페이지에 동일하게 적용됩니다.<br>
+            사전 예약은 통신사, 애플 공식 홈페이지, 그리고 쿠팡과 같은 주요 온라인
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <button type="button" class="btn_close"></button>
+</div>
+
+<script>
+  /* voiceCommand 버튼모음 (창닫기) */
+  const voiceCommandCloseBtnWrap = () => {
+    const mainPage = document.getElementById('mainPage');
+    const voiceCommand = document.getElementById('voiceCommand');
+    if (!voiceCommand) return;
+
+    const closeBtn = voiceCommand.querySelector('.btn_close');
+
+    const removeActiveClass = () => {
+      if (voiceCommand.classList.contains('active')) {
+        voiceCommand.classList.remove('active', 'has_airshower', 'has_lighting', 'has_airdry', 'has_radio', 'has_searching');
+        mainPage.classList.remove('is_active');
+      }
+    };
+
+    if (closeBtn) {
+      closeBtn.addEventListener('click', removeActiveClass);
+    }
+  }
+  voiceCommandCloseBtnWrap();
+
+  /* shower 버튼모음 (약/중/강) */
+  const voiceCommandAirShowerBtnWrap = () => {
+    const box = document.querySelector('.voice_airshower_box');
+    if (!box) return;
+
+    const mainPage = document.getElementById('mainPage');
+    const levelBtns = box.querySelectorAll('.airshower_btn_wrap .btn_level');
+    const videos = box.querySelectorAll('.video_box .on_ing'); 
+
+    if (!levelBtns.length || !videos.length) return;
+
+    const getLevelClass = (btn) =>
+      ['weak', 'medium', 'strong'].find((c) => btn.classList.contains(c));
+
+    const getVideoByLevel = (level) => {
+      return box.querySelector(`.video_box .on_ing.${level}`);
+    };
+
+    const restartVideo = (video) => {
+      if (!video) return;
+      video.pause();
+      video.currentTime = 0;
+      video.play().catch(() => {});
+    };
+
+    let hasStartedOnce = false;
+    let firstTimeoutId = null;
+
+    const initialBtn =
+      box.querySelector('.airshower_btn_wrap .btn_level.active') || levelBtns[0];
+
+    let currentLevel = initialBtn ? getLevelClass(initialBtn) : null;
+
+    if (currentLevel) {
+      const initialVideo = getVideoByLevel(currentLevel);
+
+      // 모든 비디오 정리
+      videos.forEach((v) => {
+        v.classList.remove('active');
+        v.pause();
+        v.currentTime = 0;
+      });
+
+      if (initialVideo) {
+        initialVideo.classList.add('active');
+      }
+    }
+
+    // main에 is_active 붙을 때 최초 1회 0.4초 후 재생 예약
+    const scheduleFirstStart = () => {
+      if (hasStartedOnce) return;
+      if (!mainPage || !mainPage.classList.contains('is_active')) return;
+      if (firstTimeoutId !== null) return; 
+
+      const activeVideo = box.querySelector('.video_box .on_ing.active');
+      if (!activeVideo) return;
+
+      firstTimeoutId = setTimeout(() => {
+        restartVideo(activeVideo);
+        hasStartedOnce = true;
+        firstTimeoutId = null;
+      }, 400);
+    };
+
+    if (mainPage) {
+      scheduleFirstStart();
+
+      const observer = new MutationObserver((mutations) => {
+        mutations.forEach((m) => {
+          if (m.attributeName === 'class') {
+            scheduleFirstStart();
+          }
+        });
+      });
+
+      observer.observe(mainPage, { attributes: true });
+    }
+
+    // 강·중·약 버튼 클릭
+    levelBtns.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const level = getLevelClass(btn);
+        if (!level) return;
+        currentLevel = level;
+
+        levelBtns.forEach((b) => b.classList.remove('active'));
+        btn.classList.add('active');
+
+        videos.forEach((v) => v.classList.remove('active'));
+        const targetVideo = getVideoByLevel(level);
+        if (!targetVideo) return;
+        targetVideo.classList.add('active');
+
+        if (firstTimeoutId !== null) {
+          clearTimeout(firstTimeoutId);
+          firstTimeoutId = null;
+        }
+
+        restartVideo(targetVideo);
+        hasStartedOnce = true; 
+      });
+    });
+  };
+  voiceCommandAirShowerBtnWrap();
+
+  /* lighting 조명 조절 */
+  const voiceCommandLightingWrap = () => {
+    const lightingBox = document.querySelector('.voice_lighting_box');
+    if (!lightingBox) return;
+
+    const btns = lightingBox.querySelectorAll('.lighting_btn_wrap button');
+    const lightingImgWrap = lightingBox.querySelector('.lighting_img');
+    const lightingImg = lightingImgWrap.querySelector('img');
+    const range = lightingBox.querySelector('#percentRange');
+    const percentValue = lightingBox.querySelector('#percentValue');
+
+    if (!lightingImg || !btns.length || !range || !percentValue) return;
+
+    // 버튼 클릭 시 색상 변경 
+    btns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        if (btn.classList.contains('active')) return;
+
+        btns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+
+        const src = lightingImg.getAttribute('src');
+        const newColor = btn.classList.contains('btn_yellow')
+          ? 'yellow'
+          : btn.classList.contains('btn_white')
+          ? 'white'
+          : 'led';
+
+        const newSrc = src.replace(/lighting_(yellow|white|led)_/, `lighting_${newColor}_`);
+
+        lightingImgWrap.classList.remove('fade-in');
+        lightingImgWrap.classList.add('fade-out');
+
+        setTimeout(() => {
+          lightingImg.setAttribute('src', newSrc);
+          lightingImgWrap.classList.remove('fade-out');
+          lightingImgWrap.classList.add('fade-in');
+        }, 250);
+      });
+    });
+
+    // range 조절 시 퍼센트 텍스트 & 이미지 숫자 변경 + 0일 때 숨김
+    range.addEventListener('input', () => {
+      const val = range.value;
+      percentValue.textContent = val;
+
+      if (parseInt(val) === 0) {
+        lightingImgWrap.classList.add('is_hidden');
+        return;
+      } else {
+        lightingImgWrap.classList.remove('is_hidden');
+      }
+
+      const src = lightingImg.getAttribute('src');
+      const newSrc = src.replace(/_(\d{1,3})p\.png$/, `_${val}p.png`);
+      lightingImg.setAttribute('src', newSrc);
+    });
+  };
+  voiceCommandLightingWrap();
+
+  /* airdry 버튼모음 (약/중/강) */
+  const voiceCommandAirDryBtnWrap = () => {
+    const levelBtns = document.querySelectorAll('.voice_command_wrap .airdry_btn_wrap .btn_mode');
+
+    levelBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        levelBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+      });
+    });
+  }
+  voiceCommandAirDryBtnWrap();
+
+  /* radio 버튼 모음 */
+  const voiceCommandRadioBtnWrap = () => {
+    // play/stop 버튼 선택
+    const voiceCommandRadioPlayStop = () => {
+      const btnPlay = document.querySelector('.voice_radio_box .btn_play');
+      const radioBox = document.querySelector('.voice_radio_box');
+
+      btnPlay.addEventListener('click', () => {
+        btnPlay.classList.toggle('stop');
+
+        if (btnPlay.classList.contains('stop')) {
+          radioBox.classList.remove('radio_off');
+        } else {
+          radioBox.classList.add('radio_off');
+        }
+      });
+    };
+    voiceCommandRadioPlayStop();
+
+
+    // AM/FM 선택
+    const voiceCommandRadioFrequency = () => {
+      const frequencyBtns = document.querySelectorAll('.frequency_btn_wrap .btn_frequency');
+
+      frequencyBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          frequencyBtns.forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+        });
+      });
+    }
+    voiceCommandRadioFrequency();
+
+    // 볼륨 조절
+    const voiceCommandRadioVolume = () => {
+      const radioRange = document.getElementById('radioRange');
+      const radioVolume = document.querySelector('.radio_volume');
+  
+      const updateRange = () => {
+        const val = radioRange.value;
+        radioVolume.textContent = `${val}%`;
+        radioRange.style.setProperty('--val', radioRange.value);
+      };
+  
+      updateRange(); 
+      radioRange.addEventListener('input', updateRange);
+    }
+    voiceCommandRadioVolume();
+  }
+  voiceCommandRadioBtnWrap();
+
+  /* searching 버튼 모음 */
+  const voiceCommandSearchingBtnWrap = () => {
+    // 닫기버튼
+    const voiceCommand = document.getElementById('voiceCommand');
+    if (!voiceCommand) return;
+
+    const closeBtn = voiceCommand.querySelector('.voice_searching_box .btn_searching_close');
+    const mainPage = document.getElementById('mainPage');
+
+    const removeActiveClass = () => {
+      if (voiceCommand.classList.contains('active')) {
+        voiceCommand.classList.remove('active', 'has_airshower', 'has_lighting', 'has_airdry', 'has_radio', 'has_searching');
+        mainPage.classList.remove('is_active');
+      }
+    };
+
+    if (closeBtn) {
+      closeBtn.addEventListener('click', removeActiveClass);
+    }
+
+    // 텍스트 스크롤 영역
+    const searchingScrollEvent = () => {
+      const box = document.querySelector('.searching_txt_box');
+      const inner = box?.querySelector('.box_inner');
+      if (!box || !inner) return;
+
+      inner.addEventListener('scroll', () => {
+        const scrollTop = inner.scrollTop;
+        const scrollHeight = inner.scrollHeight;
+        const clientHeight = inner.clientHeight;
+
+        // 스크롤이 맨 위가 아닐 때 scrolling 클래스 추가
+        if (scrollTop > 0) {
+          box.classList.add('scrolling');
+        } else {
+          box.classList.remove('scrolling');
+        }
+
+        // 맨 아래 도달 시 is_end 클래스 추가
+        if (scrollTop + clientHeight >= scrollHeight - 1) {
+          box.classList.add('is_end');
+        } else {
+          box.classList.remove('is_end');
+        }
+      });
+    };
+
+    searchingScrollEvent();
+  }
+  voiceCommandSearchingBtnWrap();
+</script>

@@ -1,0 +1,223 @@
+<div class="airshower_wrap">
+  <div class="airshower_box">
+    <button type="button" class="btn_back">에어샤워</button>
+    <p class="tit">Shower<span class="sub_tit">Air</span></p>
+    <p class="airshower_status has_off">에어샤워 <span class="point_txt">진행중</span>입니다.</p>
+    <div class="airshower_img has_off">
+      <img src="/assets/images/main/airshower_fan.png" alt="" class="on">
+      <img src="/assets/images/main/airshower_fan_off.png" alt="" class="off">
+      <div class="video_box">
+        <video 
+          class="on_ing weak"
+          src="/assets/images/main/airshower_fan_weak.mp4"
+          autoplay
+          muted
+          loop
+          playsinline
+        ></video>
+        <video 
+          class="on_ing medium"
+          src="/assets/images/main/airshower_fan_medium.mp4"
+          autoplay
+          muted
+          loop
+          playsinline
+        ></video>
+        <video 
+          class="on_ing strong"
+          src="/assets/images/main/airshower_fan_strong.mp4"
+          autoplay
+          muted
+          loop
+          playsinline
+        ></video>
+      </div>
+    </div>
+    <div class="airshower_btn_wrap has_off">
+      <button type="button" class="btn_level weak">
+        <span class="ic_wrap"></span>
+        <span class="txt">약</span>
+      </button>
+      <button type="button" class="btn_level medium">
+        <span class="ic_wrap"></span>
+        <span class="txt">중</span>
+      </button>
+      <button type="button" class="btn_level strong active">
+        <span class="ic_wrap"></span>
+        <span class="txt">강</span>
+      </button>
+    </div>
+    <button type="button" class="btn_airshower_power off"></button>
+  </div>
+  <button type="button" class="btn_close"></button>
+</div>
+
+<script>
+  /* shower 버튼모음 (뒤로가기/창닫기) */
+  const airShowerCloseBtnWrap = () => {
+    const airShower = document.getElementById('airShower');
+    const mainPage = document.getElementById('mainPage');
+    if (!airShower) return;
+
+    const backBtn = airShower.querySelector('.btn_back');
+    const closeBtn = airShower.querySelector('.btn_close');
+
+    const removeActiveClass = () => {
+      if (airShower.classList.contains('active')) {
+        airShower.classList.remove('active');
+        mainPage.classList.remove('slice_animation');
+      }
+    };
+
+    if (backBtn) {
+      backBtn.addEventListener('click', removeActiveClass);
+    }
+
+    if (closeBtn) {
+      closeBtn.addEventListener('click', removeActiveClass);
+    }
+  }
+  airShowerCloseBtnWrap();
+
+  /* shower 버튼모음 (약/중/강) / 전원버튼 */
+  const airShowerVideoControl = () => {
+    const airShowerBox = document.querySelector('.airshower_box');
+    if (!airShowerBox) return;
+
+    const powerBtn = airShowerBox.querySelector('.btn_airshower_power');
+    const airShowerImg = airShowerBox.querySelector('.airshower_img');
+    const airShowerBtnWrap = airShowerBox.querySelector('.airshower_btn_wrap');
+    const airShowerStatus = airShowerBox.querySelector('.airshower_status');
+    const pointTxt = airShowerStatus?.querySelector('.point_txt');
+    const levelBtns = airShowerBox.querySelectorAll('.airshower_btn_wrap .btn_level');
+    const videos = airShowerBox.querySelectorAll('.video_box .on_ing'); // weak / medium / strong
+
+    if (
+      !powerBtn ||
+      !airShowerImg ||
+      !airShowerBtnWrap ||
+      !airShowerStatus ||
+      !pointTxt ||
+      !levelBtns.length ||
+      !videos.length
+    ) return;
+
+    // 마지막으로 사용한 강도 (weak / medium / strong)
+    let lastActiveLevel =
+      airShowerBox.querySelector('.airshower_btn_wrap .btn_level.active')
+        ?.classList[1] || null;
+
+    // 전원 ON 시 딜레이 재생용 타이머
+    let playTimeoutId = null;
+
+    const getLevelClass = (btn) => {
+      return ['weak', 'medium', 'strong'].find(c => btn.classList.contains(c));
+    };
+
+    const getVideoByLevel = (level) => {
+      return airShowerBox.querySelector(`.video_box .on_ing.${level}`);
+    };
+
+    const playVideoFromStart = (video) => {
+      if (!video) return;
+      video.pause();
+      video.currentTime = 0;
+      video.play().catch(() => {});
+    };
+
+    // 초기 상태: has_off 이면 모든 영상 완전 정지 + 처음으로
+    if (airShowerImg.classList.contains('has_off') || powerBtn.classList.contains('off')) {
+      videos.forEach(v => {
+        v.pause();
+        v.currentTime = 0;
+        v.autoplay = false;
+        v.removeAttribute('autoplay');
+      });
+    }
+
+    // 1강/중/약 버튼 클릭
+    levelBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        // 전원 꺼져 있으면 동작 안 함
+        if (powerBtn.classList.contains('off')) return;
+
+        const level = getLevelClass(btn);
+        if (!level) return;
+
+        levelBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        lastActiveLevel = level;
+
+        videos.forEach(v => v.classList.remove('active'));
+        const targetVideo = getVideoByLevel(level);
+        if (targetVideo) {
+          targetVideo.classList.add('active');
+          playVideoFromStart(targetVideo);
+        }
+
+        pointTxt.textContent = '진행중';
+      });
+    });
+
+    // 전원 버튼 클릭
+    powerBtn.addEventListener('click', () => {
+      const isOff = powerBtn.classList.toggle('off');
+
+      airShowerImg.classList.toggle('has_off', isOff);
+      airShowerBtnWrap.classList.toggle('has_off', isOff);
+      airShowerStatus.classList.toggle('has_off', isOff);
+
+      // 이전 딜레이 재생 타이머 제거
+      if (playTimeoutId !== null) {
+        clearTimeout(playTimeoutId);
+        playTimeoutId = null;
+      }
+
+      if (isOff) {
+        videos.forEach(v => {
+          v.pause();
+          v.currentTime = 0;
+          v.classList.remove('active');
+        });
+        levelBtns.forEach(b => b.classList.remove('active'));
+        pointTxt.textContent = '작동 전';
+      } else {
+        if (!lastActiveLevel) {
+          const defaultBtn =
+            airShowerBox.querySelector('.airshower_btn_wrap .btn_level.strong') ||
+            levelBtns[0];
+          if (defaultBtn) {
+            lastActiveLevel = getLevelClass(defaultBtn) || 'strong';
+          }
+        }
+
+        // 버튼 active 복구
+        levelBtns.forEach(b => {
+          const level = getLevelClass(b);
+          b.classList.toggle('active', level === lastActiveLevel);
+        });
+
+        // 비디오 active 복구 (재생은 0.4초 뒤)
+        videos.forEach(v => {
+          v.classList.remove('active');
+          v.pause();
+          v.currentTime = 0;
+        });
+
+        const targetVideo = getVideoByLevel(lastActiveLevel);
+
+        if (targetVideo) {
+          targetVideo.classList.add('active');
+
+          playTimeoutId = setTimeout(() => {
+            playVideoFromStart(targetVideo);
+            playTimeoutId = null;
+          }, 400);
+        }
+
+        pointTxt.textContent = '진행중';
+      }
+    });
+  };
+  airShowerVideoControl();
+</script>

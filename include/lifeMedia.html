@@ -1,0 +1,76 @@
+<div class="lifemedia_site_wrap">
+  <div class="top_btn_wrap">
+    <div class="volume_btn_box">
+      <button type="button" class="btn_volume down"></button>
+      <p class="volume_num">28%</p>
+      <button type="button" class="btn_volume up"></button>
+    </div>
+    <div class="link_btn_box">
+      <button type="button" class="btn_link google">
+        <img src="/assets/images/main/lifemedia_logo_google.svg" alt="">
+      </button>
+      <button type="button" class="btn_link naver">
+        <img src="/assets/images/main/lifemedia_logo_naver.svg" alt="">
+      </button>
+      <button type="button" class="btn_link daum">
+        <img src="/assets/images/main/lifemedia_logo_daum.svg" alt="">
+      </button>
+      <button type="button" class="btn_link youtube">
+        <img src="/assets/images/main/lifemedia_logo_youtube.svg" alt="">
+      </button>
+    </div>
+    <button type="button" class="btn_close"></button>
+  </div>
+  <div class="search_wrap">
+    <div class="prev_next_btn">
+      <button type="button" class="btn_prev"></button>
+      <button type="button" class="btn_next"></button>
+    </div>
+    <div class="search_box">
+      <input type="text" placeholder="https://www.naver.com/">
+    </div>
+    <button type="button" class="btn_refresh"></button>
+  </div>
+  <div class="site_wrap">
+    <img src="/assets/images/main/lifemedia_naver.jpg" alt="">
+  </div>
+</div>
+<!-- #lefeMedia에 has_voice 클래스가 있을 경우 활성화 되는 영역 -->
+<div class="lifemedia_voice_wrap">
+  <div class="bg_top"></div>
+  <div class="bg_bottom"></div>
+  <div class="voice_box">
+    <div class="voice_img">
+      <img src="/assets/images/main/voice_basic.gif" alt="">
+    </div>
+    <p class="voice_txt">헤이미러 유튜브 켜줘</p>
+  </div>
+  <p class="voice_status">음성을 듣고 있어요</p>
+</div>
+
+<script>
+  /* shower 버튼모음 (창닫기) */
+  const lifeMediaCloseBtnWrap = () => {
+    const lifeMedia = document.getElementById('lifeMedia');
+    const mainEl = document.querySelector('main') || document.getElementById('mainPage'); 
+    if (!lifeMedia) return;
+
+    const closeBtn = lifeMedia.querySelector('.btn_close');
+
+    const removeActiveClass = () => {
+      setTimeout(() => {
+        if (lifeMedia.classList.contains('active')) {
+          lifeMedia.classList.remove('active');
+        }
+        if (mainEl) {
+          mainEl.classList.remove('slice_calendar');
+        }
+      }, 100);
+    };
+
+    if (closeBtn) {
+      closeBtn.addEventListener('click', removeActiveClass);
+    }
+  }
+  lifeMediaCloseBtnWrap();
+</script>

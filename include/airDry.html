@@ -1,0 +1,239 @@
+<div class="airdry_wrap">
+  <div class="airdry_box">
+    <button type="button" class="btn_back">에어 드라이</button>
+    <p class="tit">Air Dry</p>
+    <p class="airdry_status">
+      AI 제습 케어<span class="point_txt">진행중</span>입니다.
+    </p>
+    <div class="airdry_img">
+      <video class="airdry_video" autoplay muted playsinline loop></video>
+      <img src="/assets/images/main/airdry_fan_off.png" alt="" class="off" />
+    </div>
+    <div class="airdry_btn_wrap">
+      <button
+        type="button"
+        class="btn_mode sleep"
+        data-video="/assets/video/airdry_sleep.mp4"
+      >
+        <span class="txt">취침</span>
+      </button>
+      <button
+        type="button"
+        class="btn_mode normal active"
+        data-video="/assets/video/airdry_normal.mp4"
+      >
+        <span class="txt">표준</span>
+      </button>
+      <button
+        type="button"
+        class="btn_mode turbo"
+        data-video="/assets/video/airdry_normal.mp4"
+      >
+        <span class="txt">쾌속</span>
+      </button>
+      <button
+        type="button"
+        class="btn_mode auto"
+        data-video="/assets/video/airdry_auto.webm"
+      >
+        <span class="txt">자동</span>
+      </button>
+    </div>
+    <div class="humidity_btn_wrap">
+      <div class="humidity_txt_box">
+        <p class="humidity_txt">설정 습도</p>
+        <p class="humidity_num">42%</p>
+      </div>
+      <button type="button" class="btn_airdry_power"></button>
+      <div class="humidity_btn_box">
+        <button type="button" class="btn_up">
+          <span class="ic_arrow"></span>
+        </button>
+        <button type="button" class="btn_down">
+          <span class="ic_arrow"></span>
+        </button>
+      </div>
+    </div>
+  </div>
+  <button type="button" class="btn_close"></button>
+</div>
+
+<script>
+  /* airDry 버튼모음 (뒤로가기/창닫기) */
+  const airDryCloseBtnWrap = () => {
+    const airDry = document.getElementById("airDry");
+    const mainPage = document.getElementById("mainPage");
+    if (!airDry) return;
+
+    const backBtn = airDry.querySelector(".btn_back");
+    const closeBtn = airDry.querySelector(".btn_close");
+
+    const removeActiveClass = () => {
+      if (airDry.classList.contains("active")) {
+        airDry.classList.remove("active");
+        mainPage.classList.remove("slice_animation");
+      }
+    };
+
+    if (backBtn) {
+      backBtn.addEventListener("click", removeActiveClass);
+    }
+
+    if (closeBtn) {
+      closeBtn.addEventListener("click", removeActiveClass);
+    }
+  };
+  airDryCloseBtnWrap();
+
+  /* airDry 버튼모음 (취침/표준/쾌속/자동) */
+  const airDryLevelBtnWrap = () => {
+    const airDry = document.getElementById("airDry");
+    if (!airDry) return;
+
+    const modeBtns = airDry.querySelectorAll(".airdry_btn_wrap .btn_mode");
+    modeBtns.forEach((btn) => {
+      btn.addEventListener("click", () => {
+        modeBtns.forEach((b) => b.classList.remove("active"));
+        btn.classList.add("active");
+      });
+    });
+  };
+  airDryLevelBtnWrap();
+
+  /* airDry 전원버튼 */
+  const airDryPowerBtnWrap = () => {
+    const airDry = document.getElementById("airDry");
+    if (!airDry) return;
+
+    const powerBtn = airDry.querySelector(".btn_airdry_power");
+    const airDryImg = airDry.querySelector(".airdry_img");
+    const airDryBtnWrap = airDry.querySelector(".airdry_btn_wrap");
+    const airDryStatus = airDry.querySelector(".airdry_status");
+    const pointTxt = airDryStatus?.querySelector(".point_txt");
+    const humidityNum = airDry.querySelector(".humidity_num");
+    const modeBtns = airDry.querySelectorAll(".airdry_btn_wrap .btn_mode");
+
+    if (
+      !powerBtn ||
+      !airDryImg ||
+      !airDryBtnWrap ||
+      !airDryStatus ||
+      !pointTxt ||
+      !humidityNum
+    )
+      return;
+
+    let lastActiveBtn = document.querySelector(
+      ".airdry_btn_wrap .btn_mode.active"
+    );
+    const originalHumidity = humidityNum.textContent.trim(); // 기존 습도값 저장 (예: "42%")
+
+    let spinTimeoutId = null;
+
+    // 👉 초기 상태: 전원 꺼짐으로 세팅
+    powerBtn.classList.add("off");
+    airDryImg.classList.add("has_off");
+    airDryStatus.classList.add("has_off");
+    airDryBtnWrap.classList.add("has_off");
+    modeBtns.forEach((b) => b.classList.remove("active"));
+    pointTxt.textContent = "작동 전";
+    humidityNum.textContent = "-";
+
+    // 전원 버튼 클릭
+    powerBtn.addEventListener("click", () => {
+      const isOff = powerBtn.classList.toggle("off");
+
+      airDryImg.classList.toggle("has_off", isOff);
+      airDryBtnWrap.classList.toggle("has_off", isOff);
+      airDryStatus.classList.toggle("has_off", isOff);
+
+      // 애니메이션 타이머/클래스 초기화
+      if (spinTimeoutId !== null) {
+        clearTimeout(spinTimeoutId);
+        spinTimeoutId = null;
+      }
+      airDryImg.classList.remove("is_on");
+
+      if (isOff) {
+        // 🔌 전원 꺼짐
+        modeBtns.forEach((b) => b.classList.remove("active"));
+        pointTxt.textContent = "작동 전";
+        humidityNum.textContent = "-";
+      } else {
+        // 🔌 전원 켜짐
+        if (lastActiveBtn) lastActiveBtn.classList.add("active");
+        pointTxt.textContent = "진행중";
+        humidityNum.textContent = originalHumidity;
+
+        // ⏱ 1초 뒤에 팬 회전 시작
+        spinTimeoutId = setTimeout(() => {
+          airDryImg.classList.add("is_on");
+        }, 1000);
+      }
+    });
+
+    // 모드 버튼 클릭
+    modeBtns.forEach((btn) => {
+      btn.addEventListener("click", () => {
+        if (powerBtn.classList.contains("off")) return; // 전원 꺼져 있으면 동작 안 함
+
+        modeBtns.forEach((b) => b.classList.remove("active"));
+        btn.classList.add("active");
+        lastActiveBtn = btn;
+      });
+    });
+  };
+
+  airDryPowerBtnWrap();
+  /* 에어드라이 영상 변경 기능 추가 */
+  const airDryVideoController = () => {
+    const airDry = document.getElementById("airDry");
+    if (!airDry) return;
+
+    const wrap = airDry.querySelector(".airdry_wrap");
+    const powerBtn = airDry.querySelector(".btn_airdry_power");
+    const videoEl = airDry.querySelector(".airdry_video");
+    const fanOffImg = airDry.querySelector(".airdry_img .off");
+    const modeBtns = airDry.querySelectorAll(".airdry_btn_wrap .btn_mode");
+
+    if (!powerBtn || !videoEl || !fanOffImg || modeBtns.length === 0) return;
+
+    const playVideoForBtn = (btn) => {
+      const src = btn?.dataset?.video;
+      if (!src) return;
+
+      videoEl.src = src;
+      videoEl.style.display = "block";
+      fanOffImg.style.display = "none";
+
+      videoEl.load();
+      videoEl.play();
+    };
+
+    modeBtns.forEach((btn) => {
+      btn.addEventListener("click", () => {
+        if (powerBtn.classList.contains("off")) return;
+        playVideoForBtn(btn);
+      });
+    });
+
+    powerBtn.addEventListener("click", () => {
+      const isOff = powerBtn.classList.contains("off");
+
+      if (!isOff) {
+        const activeBtn = wrap.querySelector(".btn_mode.active") || modeBtns[0];
+        if (activeBtn) playVideoForBtn(activeBtn);
+      } else {
+        fanOffImg.style.display = "block";
+        videoEl.style.display = "none";
+        videoEl.pause();
+      }
+    });
+
+    // 초기 비디오 상태를 팬 정지 이미지로 고정
+    fanOffImg.style.display = "block";
+    videoEl.style.display = "none";
+  };
+
+  airDryVideoController();
+</script>

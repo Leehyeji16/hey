@@ -1,0 +1,438 @@
+<div class="top_wrap">
+  <button type="button" class="btn_back">건강측정</button>
+  <button type="button" class="btn_close"></button>
+</div>
+
+<!-- 측정중 -->
+<div class="scanning_wrap">
+  <div class="scanning_img_wrap">
+    <div class="img_wrap">
+      <img src="/assets/images/main/healthscan_img.jpg" alt="">
+    </div>
+    <div class="gradient_box"></div>
+    <div class="scan_box">
+      <div class="left"></div>
+      <div class="line">
+        <img src="/assets/images/main/healthscan_line.png" alt="">
+      </div>
+      <div class="center"></div>
+      <div class="right"></div>
+    </div>
+    <div class="txt_box">
+      <p class="health_scan_tit">scan <span class="sub_tit">Health</span></p>
+      <p class="scan_info">측정을 위해 정면을 바라보고 잠시 기다려주세요</p>
+    </div>
+  </div>
+  <div class="scanning_txt_wrap">
+    <p class="scanning_txt">헬스 스캔 측정중입니다 ...</p>
+    <ul class="scanning_num_list">
+      <li>
+        <p class="scanning_tit fever">발열여부</p>
+        <p class="scanning_num">
+          <span class="scanning_before">-</span>
+          <span class="scanning_after">36.8</span>
+        </p>
+      </li>
+      <li>
+        <p class="scanning_tit oxygen">산소 포화도</p>
+        <p class="scanning_num">
+          <span class="scanning_before">-</span>
+          <span class="scanning_after">99</span>
+        </p>
+      </li>
+      <li>
+        <p class="scanning_tit heartrate">심박수</p>
+        <p class="scanning_num">
+          <span class="scanning_before">-</span>
+          <span class="scanning_after">84</span>
+        </p>
+      </li>
+      <li>
+        <p class="scanning_tit vitality_rest">활력지수 안정</p>
+        <p class="scanning_num">
+          <span class="scanning_before">-</span>
+          <span class="scanning_after">84</span>
+        </p>
+      </li>
+      <li>
+        <p class="scanning_tit stress">스트레스 지수</p>
+        <p class="scanning_num">
+          <span class="scanning_before">-</span>
+          <span class="scanning_after">50</span>
+        </p>
+      </li>
+      <li>
+        <p class="scanning_tit vitality_strength">활력지수 강도</p>
+        <p class="scanning_num">
+          <span class="scanning_before">-</span>
+          <span class="scanning_after">120</span>
+        </p>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<!-- 측정완료 -->
+<div class="scanning_complete_wrap">
+  <div class="tit_box">
+    <p class="tit">Scan <span class="sub_tit">Health</span></p>
+  </div>
+  <div class="complete_box">
+    <div class="profile_wrap">
+      <div class="profile">
+        <img src="/assets/images/common/profile_img.png" alt="프로필 이미지">
+      </div>
+      <div class="scanning_img_box">
+        <img src="/assets/images/main/healthscan_img.jpg" alt="">
+      </div>
+    </div>
+    <div class="complete_txt_box">
+      <p class="name">채현</p>
+      <p class="complete_tit">건강측정 결과</p>
+      <p class="complete_detail">
+        일의 활력이 부족하지만 적절한 휴식이 필요합니다. <br>
+        안정적이며 건강한 생활 습관을 가지고 있습니다. <br>
+        마음이 편안하고 스트레스를 잘 감내합니다.
+      </p>
+    </div>
+  </div>
+  <ul class="complete_num_list">
+    <li>
+      <p class="complete_tit fever">발열여부</p>
+      <p class="complete_num">36.8</p>
+    </li>
+    <li>
+      <p class="complete_tit oxygen">산소 포화도</p>
+      <p class="complete_num">99</p>
+    </li>
+    <li>
+      <p class="complete_tit heartrate">심박수</p>
+      <p class="complete_num">84</p>
+    </li>
+    <li>
+      <p class="complete_tit vitality_rest">활력지수 안정</p>
+      <p class="complete_num">흐름변화</p>
+    </li>
+    <li>
+      <p class="complete_tit stress">스트레스 지수</p>
+      <p class="complete_num">50</p>
+    </li>
+    <li>
+      <p class="complete_tit vitality_strength">활력지수 강도</p>
+      <p class="complete_num">흐름변화</p>
+    </li>
+  </ul>
+  <div class="hexagon_wrap">
+    <div class="hexagon_box">
+      <img src="/assets/images/main/healthscan_hexagon.png" alt="">
+      <div class="hexagon_data">
+        <img src="/assets/images/main/healthscan_hexagon_data.png" alt="">
+      </div>
+    </div>
+    <ul class="hexagon_data_list">
+      <li class="fever">
+        <p class="data">정상</p>
+        <p class="data_tit">발열여부</p>
+      </li>
+      <li class="heartrate">
+        <p class="data">84</p>
+        <p class="data_tit">심박수</p>
+      </li>
+      <li class="oxygen">
+        <p class="data">99</p>
+        <p class="data_tit">산소 포화도</p>
+      </li>
+      <li class="stress">
+        <p class="data">50</p>
+        <p class="data_tit">스트레스 지수</p>
+      </li>
+      <li class="vitality_rest">
+        <p class="data color_skyblue">흐름변화</p>
+        <p class="data_tit">활력지수 안정</p>
+      </li>
+      <li class="vitality_strength">
+        <p class="data color_skyblue">흐름변화</p>
+        <p class="data_tit">활력지수 강도</p>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<script>
+  /* healthScan 버튼모음 (뒤로가기/창닫기) */
+  const healthScanBtnWrap = () => {
+    const healthScan = document.getElementById('healthScan');
+    if (!healthScan) return;
+
+    const backBtn = healthScan.querySelector('.btn_back');
+    const closeBtn = healthScan.querySelector('.btn_close');
+
+    const removeActiveClass = () => {
+      if (healthScan.classList.contains('active')) {
+        healthScan.classList.remove('active');
+      }
+    };
+
+    if (backBtn) {
+      backBtn.addEventListener('click', removeActiveClass);
+    }
+
+    if (closeBtn) {
+      closeBtn.addEventListener('click', removeActiveClass);
+    }
+  }
+  healthScanBtnWrap();
+
+  /* 측정중 내부 애니메이션 */
+  const scanningAnimation = () => {
+    // 시간 및 움직임 설정값
+    const ACTIVATE_DELAY = 2000;    // #healthScan에 active 클래스가 붙고 스캔 시작하기 전까지의 대기 시간 (ms)
+    const STEP_COUNT = 6;           // 단계 수 (li 개수 / 스캔 체크 항목 개수)
+    const STEP_DURATION = 1500;     // 각 단계(각 li 항목)가 활성화되는 데 걸리는 시간 (ms)
+    const NUMBER_FADE_DELAY = 500;  // li 활성화 직후 숫자(before→after) 전환 시작까지 대기 시간 (ms)
+
+    // 라인 이동 관련 설정
+    const START_Y = -45;            // 스캔 라인의 시작 translateY 위치(%)
+    const END_Y = 195;              // 스캔 라인의 1차 목표 위치 (phase1 종료 지점, %)
+    const FINAL_Y = 222;            // 스캔 라인의 최종 위치 (phase2 종료 지점, %)
+
+    // 단계 전환 및 완료 대기 설정
+    const PHASE2_DELAY = 800;      // 1차 스캔 끝(195%)에서 2차 스캔 시작 전까지 대기 시간 (ms)
+    const COMPLETE_DELAY = 1000;    // 2차 스캔 끝(222%) 후 결과 완료 UI 표시 전까지 대기 시간 (ms)
+
+    const sectionEl = document.getElementById('healthScan');
+    if (!sectionEl) return;
+
+    const wrapEl = sectionEl.querySelector('.scanning_wrap');
+    const lineEl = sectionEl.querySelector('.scan_box .line');
+    const stepEls = Array.from(sectionEl.querySelectorAll('.scanning_num_list > li'));
+    const scanningTxtEl = sectionEl.querySelector('.scanning_txt');
+    if (!wrapEl || !lineEl || stepEls.length !== STEP_COUNT || !scanningTxtEl) return;
+
+    const TOTAL_DURATION = STEP_COUNT * STEP_DURATION;
+    const TOTAL_DISTANCE = END_Y - START_Y;
+    const STEP_SIZE = TOTAL_DISTANCE / STEP_COUNT;
+
+    const thresholds = Array.from({ length: STEP_COUNT }, (_, i) => START_Y + STEP_SIZE * i + 5);
+
+    const setLineY = (y) => {
+      lineEl.style.transform = `translate(-50%, ${y}%)`;
+    };
+
+    const activateIndex = (idx) => {
+      stepEls.forEach((li, i) => li.classList.toggle('active', i === idx));
+
+      const li = stepEls[idx];
+      const before = li.querySelector('.scanning_before');
+      const after = li.querySelector('.scanning_after');
+      if (!before || !after) return;
+
+      if (after.dataset.changed === 'true') return;
+      after.dataset.changed = 'true';
+
+      setTimeout(() => {
+        before.style.transition = 'opacity 0.5s ease';
+        after.style.transition  = 'opacity 0.5s ease';
+        before.style.opacity = 0;
+        after.style.opacity  = 1;
+      }, NUMBER_FADE_DELAY);
+    };
+
+    const activateAllItems = () => {
+      stepEls.forEach(li => li.classList.add('active'));
+    };
+
+    const MS_PER_PERCENT = TOTAL_DURATION / TOTAL_DISTANCE;
+    const phase2Duration = Math.max(0, (FINAL_Y - END_Y) * MS_PER_PERCENT);
+
+    const animateLinear = (fromY, toY, duration) =>
+      new Promise(resolve => {
+        const t0 = performance.now();
+        const tick = (now) => {
+          const progress = Math.min(1, (now - t0) / duration);
+          const y = fromY + (toY - fromY) * progress;
+          setLineY(y);
+          if (progress < 1) requestAnimationFrame(tick);
+          else resolve();
+        };
+        requestAnimationFrame(tick);
+      });
+
+    let isRunning = false;
+    let lastActivated = -1;
+
+    const play = async () => {
+      if (isRunning) return;
+      isRunning = true;
+
+      stepEls.forEach(li => {
+        li.classList.remove('active');
+        const b = li.querySelector('.scanning_before');
+        const a = li.querySelector('.scanning_after');
+        if (b) b.style.opacity = 1;
+        if (a) { a.style.opacity = 0; a.dataset.changed = 'false'; }
+      });
+      lastActivated = -1;
+      setLineY(START_Y);
+      wrapEl.classList.remove('complete');
+
+      await new Promise(r => setTimeout(r, ACTIVATE_DELAY));
+
+      // PHASE 1: -45 → 195
+      const t0 = performance.now();
+      await new Promise(resolvePhase1 => {
+        const tick = (now) => {
+          const elapsed = now - t0;
+          const raw = Math.min(1, elapsed / TOTAL_DURATION);
+          const y = START_Y + (END_Y - START_Y) * raw;
+          setLineY(y);
+
+          let idx = lastActivated;
+          while (idx + 1 < STEP_COUNT && y >= thresholds[idx + 1] - 1e-6) {
+            idx++;
+          }
+          if (idx !== lastActivated) {
+            activateIndex(idx);
+            lastActivated = idx;
+          }
+
+          if (raw < 1) {
+            requestAnimationFrame(tick);
+          } else {
+            setLineY(END_Y);
+            if (lastActivated < STEP_COUNT - 1) {
+              activateIndex(STEP_COUNT - 1);
+              lastActivated = STEP_COUNT - 1;
+            }
+            resolvePhase1();
+          }
+        };
+        requestAnimationFrame(tick);
+      });
+
+      // 195% 도달 후 2초 대기
+      await new Promise(r => setTimeout(r, PHASE2_DELAY));
+
+      // PHASE2 시작: 문구 변경 + li 전체 active
+      activateAllItems();
+      scanningTxtEl.textContent = "측정이 완료되어 결과를 준비중입니다...";
+
+      // 195 → 222 (같은 속도)
+      await animateLinear(END_Y, FINAL_Y, phase2Duration);
+
+      // 222%에서 2초 대기
+      await new Promise(r => setTimeout(r, COMPLETE_DELAY));
+
+      // 완료 UI 노출
+      wrapEl.classList.add('complete');
+      sectionEl.dispatchEvent(new CustomEvent('healthscan:complete'));
+
+      isRunning = false;
+    };
+
+    if (sectionEl.classList.contains('active')) play();
+    const mo = new MutationObserver(() => {
+      if (sectionEl.classList.contains('active') && !isRunning) play();
+    });
+    mo.observe(sectionEl, { attributes: true });
+  };
+  scanningAnimation();
+
+  /* 측정중 완료 애니메이션 */
+  const scanningCompleteAnimation = () => {
+    const root = document.getElementById('healthScan');
+    if (!root) return;
+
+    const wrap = root.querySelector('.scanning_wrap');
+    const completeWrap = document.querySelector('.scanning_complete_wrap');
+    if (!wrap || !completeWrap) return;
+
+    const FLAG_KEY = 'fadeDone';
+
+    // --- 1초 후 페이드아웃 & 이미지 이동 시작 ---
+    const fadeOutStage = () => {
+      if (wrap.dataset[FLAG_KEY] === '1') return; // 중복방지
+      wrap.dataset[FLAG_KEY] = '1';
+
+      setTimeout(() => {
+        const targets = [
+          wrap.querySelector('.scanning_txt_wrap'),
+          wrap.querySelector('.scanning_img_wrap .gradient_box'),
+          wrap.querySelector('.scanning_img_wrap .scan_box'),
+          wrap.querySelector('.scanning_img_wrap .txt_box'),
+          root.querySelector('.top_wrap .btn_back'),
+        ].filter(Boolean);
+
+        targets.forEach((el) => {
+          el.style.transition = el.style.transition || 'opacity .4s ease';
+          el.style.opacity = '0';
+        });
+
+        moveScanImageToComplete();
+      }, 800);
+    };
+
+    // --- FLIP으로 이미지 이동 (원본 -> 결과 박스) ---
+    const moveScanImageToComplete = () => {
+      const srcImg = root.querySelector('.scanning_img_wrap .img_wrap img');
+      const dstBox = completeWrap.querySelector('.scanning_img_box');
+      if (!srcImg || !dstBox) return;
+
+      // 좌표 계산
+      const src = srcImg.getBoundingClientRect();
+      const dst = dstBox.getBoundingClientRect();
+
+      const ghost = srcImg.cloneNode(true);
+      Object.assign(ghost.style, {
+        position: 'fixed',
+        left: `${dst.left}px`,
+        top: `${dst.top}px`,
+        width: `${dst.width}px`,
+        height: `${dst.height}px`,
+        transformOrigin: 'top left',
+        zIndex: '9999',
+        borderRadius: getComputedStyle(dstBox).borderRadius || '50%',
+        pointerEvents: 'none',
+        willChange: 'transform, border-radius, opacity',
+      });
+      document.body.appendChild(ghost);
+
+      const dx = src.left - dst.left;
+      const dy = src.top  - dst.top;
+      const sx = src.width  / dst.width;
+      const sy = src.height / dst.height;
+
+      // 초기(소스 위치로 보이게)
+      ghost.style.transform = `translate(${dx}px, ${dy}px) scale(${sx}, ${sy})`;
+      ghost.style.opacity = '1';
+
+      // 원본은 겹침 방지
+      srcImg.style.opacity = '0';
+
+      // 재생
+      ghost.getBoundingClientRect(); // reflow
+      ghost.style.transition = 'transform 1.2s cubic-bezier(.2,.7,.2,1), border-radius 1.2s cubic-bezier(.2,.7,.2,1), opacity 1.2s ease';
+      requestAnimationFrame(() => {
+        ghost.style.transform = 'translate(0,0) scale(1,1)';
+        ghost.style.borderRadius = '50%';
+      });
+
+      // complete 래퍼가 숨김 처리였다면 CSS로 따로 케어하면 됨(여기선 관여 X)
+
+      ghost.addEventListener('transitionend', () => {
+        ghost.remove();
+        const dstImg = dstBox.querySelector('img');
+        if (dstImg) dstImg.style.opacity = '1';
+      }, { once: true });
+    };
+
+    // 이미 complete라면 즉시 실행
+    if (wrap.classList.contains('complete')) {
+      fadeOutStage();
+    }
+
+    // complete가 “붙는 순간” 1회 실행 (Observer 대신 커스텀 이벤트)
+    root.addEventListener('healthscan:complete', fadeOutStage, { once: true });
+  };
+  scanningCompleteAnimation();
+</script>
